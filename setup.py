@@ -64,10 +64,12 @@ setup(name=PACKAGE_NAME,
           [console_scripts]
           mozconfig = mozconfigwrapper:mozconfig
         """,
-      platforms =['Any'],
-      classifiers=['Development Status :: 4 - Beta',
+      platforms =['Unix'],
+      classifiers=['Development Status :: 3 - Alpha',
                    'Environment :: Console',
                    'Intended Audience :: Developers',
+                   'License :: OSI Approved :: Mozilla Public License 1.1 (MPL 1.1)',
+                   'Operating System :: Unix',
                    'Topic :: Software Development :: Libraries :: Python Modules',
                   ]
      )
