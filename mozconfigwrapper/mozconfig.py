@@ -13,12 +13,14 @@ mozconfigdir = os.getenv('BUILDWITH_HOME')
 if mozconfigdir == None or mozconfigdir == '':
      mozconfigdir = os.path.expanduser("~/.mozconfigs")
 
+special_files = ['.template', '.active']
+
 def mkmozconfig(name):
     if not os.path.isdir(mozconfigdir):
         os.makedirs(mozconfigdir)
 
     mozconfig = os.path.join(mozconfigdir, name)
-    template = os.path.join(mozconfigdir, 'template')
+    template = os.path.join(mozconfigdir, '.template')
     if not os.path.isfile(template):
         shutil.copyfile(os.path.join(here, 'template'), template)
     shutil.copyfile(template, mozconfig)
@@ -26,7 +28,7 @@ def mkmozconfig(name):
     f = open(mozconfig, 'r')
     lines = f.readlines()
     f.close()
-    lines[0] = lines[0].rstrip() + name
+    lines[0] = lines[0].rstrip() + name + '\n'
     f = open(mozconfig, 'w')
     f.writelines(lines)
     f.close()
@@ -53,9 +55,9 @@ def mozconfig(arguments=sys.argv[1:]):
             print current
         return
 
-    if opt.ls:
+    if opt.ls and os.path.isdir(mozconfigdir):
         for f in os.listdir(mozconfigdir):
-            if f != 'template':
+            if f not in special_files:
                 if current != '' and f == os.path.basename(current):
                     f += "*"
                 print f
