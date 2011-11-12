@@ -9,8 +9,8 @@ Utility to make working with mozconfigs easier
 """
 
 here = os.path.dirname(os.path.realpath(__file__))
-mozconfigdir = os.getenv('BUILDWITH_HOME')
-if mozconfigdir == None or mozconfigdir == '':
+mozconfigdir = os.getenv('BUILDWITH_HOME', '')
+if mozconfigdir == '':
      mozconfigdir = os.path.expanduser("~/.mozconfigs")
 
 special_files = ['.template', '.active']

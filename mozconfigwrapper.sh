@@ -37,7 +37,7 @@ function mkmozconfig {
     mozconfig="$BUILDWITH_HOME/$name"
     python -c "from mozconfigwrapper import mkmozconfig; mkmozconfig('$name')"
     echo "Created: $mozconfig"
-    buildwith $name
+    buildwith $name "silent"
 }
 
 function rmmozconfig {
