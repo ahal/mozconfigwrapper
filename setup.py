@@ -58,12 +58,12 @@ setup(name=PACKAGE_NAME,
       license='MPL 1.1/GPL 2.0/LGPL 2.1',
       py_modules=['mozconfig'],
       scripts=['mozconfigwrapper.sh'],
-      packages=find_packages(exclude=['legacy']),
-      data_files=[('', ['template'])],
+      packages=find_packages(),
+      include_package_data=True,
       zip_safe=False,
       entry_points="""
           [console_scripts]
-          mozconfig = mozconfig:mozconfig
+          mozconfig = mozconfigwrapper:mozconfig
         """,
       platforms =['Any'],
       classifiers=['Development Status :: 4 - Beta',

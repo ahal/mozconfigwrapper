@@ -30,7 +30,7 @@ function mkmozconfig {
     typeset name="$1"
 
     mozconfig="$BUILDWITH_HOME/$name"
-    python -c "from mozconfig import mkmozconfig; mkmozconfig('$name')"
+    python -c "from mozconfigwrapper import mkmozconfig; mkmozconfig('$name')"
     echo "Created: $mozconfig"
     buildwith $name
 }

@@ -45,20 +45,26 @@ def mozconfig(arguments=sys.argv[1:]):
                       help="opens the mozconfig for editing"),
     opt, args = parser.parse_args(arguments)
 
-    current = os.getenv('MOZCONFIG')
+    current = os.getenv('MOZCONFIG', '')
     if not opt.ls and not opt.edit:
-        print current
+        if current == '':
+            print "No mozconfig activated"
+        else:
+            print current
         return
 
     if opt.ls:
         for f in os.listdir(mozconfigdir):
             if f != 'template':
-                if current not in [None, ''] and f == os.path.basename(current):
+                if current != '' and f == os.path.basename(current):
                     f += "*"
                 print f
 
     if opt.edit:
-        _edit(current)
+        if current == '':
+            print "No mozconfig activated"
+        else:
+            _edit(current)
 
 
 
