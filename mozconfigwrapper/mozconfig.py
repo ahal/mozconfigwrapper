@@ -9,10 +9,7 @@ Utility to make working with mozconfigs easier
 """
 
 here = os.path.dirname(os.path.realpath(__file__))
-mozconfigdir = os.getenv('BUILDWITH_HOME', '')
-if mozconfigdir == '':
-     mozconfigdir = os.path.expanduser("~/.mozconfigs")
-
+mozconfigdir = os.getenv('BUILDWITH_HOME', os.path.expanduser("~/.mozconfigs"))
 special_files = ['.template', '.active']
 
 def mkmozconfig(name):
@@ -28,7 +25,8 @@ def mkmozconfig(name):
     f = open(mozconfig, 'r')
     lines = f.readlines()
     f.close()
-    lines[0] = lines[0].rstrip() + name + '\n'
+    lines = [line.rstrip() + name + '\n' if line.find("MOZ_OBJDIR") != -1
+                                         else line for line in lines]
     f = open(mozconfig, 'w')
     f.writelines(lines)
     f.close()
