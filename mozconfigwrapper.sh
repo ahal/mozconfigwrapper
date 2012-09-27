@@ -65,10 +65,10 @@ function mozconfigwrapper_setup_tab_completion {
         }
         complete -o default -o nospace -F _mozconfigs buildwith rmmozconfig
     elif [ -n "$ZSH_VERSION" ] ; then
-        _virtualenvs () {
+        _mozconfigs() {
             reply=( $(mozconfigwrapper_list_mozconfigs) )
         }
-        compctl -K _virtualenvs buildwith rmmozconfig
+        compctl -K _mozconfigs buildwith rmmozconfig
     fi
 }
 

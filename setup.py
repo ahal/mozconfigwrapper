@@ -39,7 +39,7 @@ import os
 from setuptools import setup, find_packages
 
 PACKAGE_NAME = "mozconfigwrapper"
-PACKAGE_VERSION = "0.1"
+PACKAGE_VERSION = "0.2"
 
 # take description from README
 here = os.path.dirname(os.path.abspath(__file__))
