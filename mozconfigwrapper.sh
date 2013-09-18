@@ -77,8 +77,11 @@ function mozconfigwrapper_list_mozconfigs {
     # NOTE: DO NOT use ls here because colorized versions spew control characters
     #       into the output list.
     # echo seems a little faster than find, even with -depth 3.
-    mozconfigwrapper_buildwith_home
-    (\cd "$BUILDWITH_HOME"; for f in `dir -d *`; do echo $f; done)
+    mozconfigwrapper_buildwith_home || return 1
+    (echo "$BUILDWITH_HOME"/*) 2>/dev/null \
+		| command \fmt -w 1 \
+		| command \sed -e "s!^$BUILDWITH_HOME\/!!" \
+		| (unset GREP_OPTIONS; command \egrep -v '^\*$') 2>/dev/null
 }
 
 mozconfigwrapper_buildwith_home
