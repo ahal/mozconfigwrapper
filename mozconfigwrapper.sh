@@ -12,9 +12,15 @@ function mozconfigwrapper_buildwith_home {
 function buildwith {
     mozconfigwrapper_buildwith_home
     typeset name="$1"
-    
+
+    if [ -z "$name" ]
+    then
+        echo "Usage: buildwith"
+        return 1
+    fi
+
     if [ ! -f "$BUILDWITH_HOME/$name" ]
-    then 
+    then
         echo "Error: $BUILDWITH_HOME/$name does not exist"
         return 1
     fi
@@ -34,6 +40,12 @@ function mkmozconfig {
     mozconfigwrapper_buildwith_home
     typeset name="$1"
 
+    if [ -z "$name" ]
+    then
+        echo "Usage: mkmozconfig"
+        return 1
+    fi
+
     mozconfig="$BUILDWITH_HOME/$name"
     python -c "from mozconfigwrapper import mkmozconfig; mkmozconfig('$name')"
     echo "Created: $mozconfig"
@@ -43,6 +55,12 @@ function mkmozconfig {
 function rmmozconfig {
     mozconfigwrapper_buildwith_home
     typeset name="$1"
+
+    if [ -z "$name" ]
+    then
+        echo "Usage: rmmozconfig"
+        return 1
+    fi
 
     if [ ! -f "$BUILDWITH_HOME/$name" ]
     then
