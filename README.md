@@ -6,18 +6,18 @@ Mozconfigwrapper is currently Unix only.
 
 # Installation Instructions
 
-First make sure you have [setuptools](http://pypi.python.org/pypi/setuptools) installed.
+First make sure you have [pip](http://pip.readthedocs.org/en/latest/installing.html) installed.
 
 Follow these simple steps to get mozconfigwrapper running:
  
-    sudo easy_install pip
     sudo pip install mozconfigwrapper
 
-Then open your ~/.bashrc file and add the line:
+Then open your ~/.bashrc file (or equivalent) and add the line:
 
-    # may be in a different location on your system
-    # use 'which mozconfigwrapper.sh' to find it
     source /usr/local/bin/mozconfigwrapper.sh
+    
+Note: mozconfigwrapper.sh may be in a different location on your system,  
+use `which mozconfigwrapper.sh` to find it.
 
 Finally run:
 
