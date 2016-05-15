@@ -26,7 +26,7 @@ function buildwith {
     fi
 
     mozconfig="$BUILDWITH_HOME/$name"
-    echo "$name" > "$BUILDWITH_HOME/.active"
+    echo "$name" >| "$BUILDWITH_HOME/.active"
     export MOZCONFIG=$mozconfig
 
     if [ ! "$2" = "silent" ]
