@@ -1,13 +1,13 @@
 #!/usr/bin/env python
+"""
+Utility to make working with mozconfigs easier
+"""
+
 import shutil
 import subprocess
 import sys
 import os
-from optparse import OptionParser
-
-"""
-Utility to make working with mozconfigs easier
-"""
+from argparse import ArgumentParser
 
 here = os.path.dirname(os.path.realpath(__file__))
 mozconfigdir = os.getenv('BUILDWITH_HOME', os.path.expanduser("~/.mozconfigs"))
@@ -34,36 +34,36 @@ def mkmozconfig(name):
     f.close()
 
 
-def mozconfig(arguments=sys.argv[1:]):
-    parser = OptionParser(description=__doc__, usage="%prog [options]")
-    parser.add_option("-l",
-                      dest="ls",
-                      action="store_true",
-                      default=False,
-                      help="lists all available mozconfigs")
-    parser.add_option('-e', '--edit',
-                      dest="edit",
-                      action="store_true",
-                      default=False,
-                      help="opens the mozconfig for editing"),
-    opt, args = parser.parse_args(arguments)
+def mozconfig(args=sys.argv[1:]):
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("-l", "--list",
+                        dest="ls",
+                        action="store_true",
+                        default=False,
+                        help="lists all available mozconfigs")
+    parser.add_argument('-e', '--edit',
+                        dest="edit",
+                        action="store_true",
+                        default=False,
+                        help="opens the active mozconfig for editing")
+    args = parser.parse_args(args)
 
     current = os.getenv('MOZCONFIG', '')
-    if not opt.ls and not opt.edit:
+    if not args.ls and not args.edit:
         if current == '':
             print "No mozconfig activated"
         else:
             print current
         return
 
-    if opt.ls and os.path.isdir(mozconfigdir):
+    if args.ls and os.path.isdir(mozconfigdir):
         for f in os.listdir(mozconfigdir):
             if f not in special_files:
                 if current != '' and f == os.path.basename(current):
                     f += "*"
                 print f
 
-    if opt.edit:
+    if args.edit:
         if current == '':
             print "No mozconfig activated"
         else:
