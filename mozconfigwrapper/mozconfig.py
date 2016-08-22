@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from optparse import OptionParser
 import shutil
+import subprocess
 import sys
 import os
-import subprocess
+from optparse import OptionParser
 
 """
 Utility to make working with mozconfigs easier
@@ -12,6 +12,7 @@ Utility to make working with mozconfigs easier
 here = os.path.dirname(os.path.realpath(__file__))
 mozconfigdir = os.getenv('BUILDWITH_HOME', os.path.expanduser("~/.mozconfigs"))
 special_files = ['.template', '.active']
+
 
 def mkmozconfig(name):
     if not os.path.isdir(mozconfigdir):
@@ -27,10 +28,11 @@ def mkmozconfig(name):
     lines = f.readlines()
     f.close()
     lines = [line.rstrip() + name + '\n' if line.find("MOZ_OBJDIR") != -1
-                                         else line for line in lines]
+             else line for line in lines]
     f = open(mozconfig, 'w')
     f.writelines(lines)
     f.close()
+
 
 def mozconfig(arguments=sys.argv[1:]):
     parser = OptionParser(description=__doc__, usage="%prog [options]")
@@ -66,7 +68,6 @@ def mozconfig(arguments=sys.argv[1:]):
             print "No mozconfig activated"
         else:
             _edit(current)
-
 
 
 def _edit(mozconfig):
