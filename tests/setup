@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+cd "$TESTDIR/.."
+. mozconfigwrapper.sh
+
+virtualenv venv
+. venv/bin/activate
+python setup.py develop
+
+export BUILDWITH_HOME=/tmp/mozconfigs
+unset EDITOR
+unset MOZCONFIG

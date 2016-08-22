@@ -8,6 +8,10 @@ from setuptools import setup, find_packages
 PACKAGE_NAME = "mozconfigwrapper"
 PACKAGE_VERSION = "0.4"
 
+tests_require = [
+    'cram >= 0.7',
+]
+
 # take description from README
 here = os.path.dirname(os.path.abspath(__file__))
 try:
@@ -24,6 +28,7 @@ setup(name=PACKAGE_NAME,
       url='http://github.com/ahal/mozconfigwrapper',
       license='MPL 2.0/GPL 2.0/LGPL 2.1',
       scripts=['mozconfigwrapper.sh'],
+      tests_require=tests_require,
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
