@@ -107,7 +107,7 @@ mozconfigwrapper_setup_tab_completion
 
 if [ -f "$BUILDWITH_HOME/.active" ]
 then
-    active=`cat $BUILDWITH_HOME/.active`
+    active=`cat "$BUILDWITH_HOME/.active"`
     if [ ! $active = "" ]
     then
         buildwith "$active" "silent"
