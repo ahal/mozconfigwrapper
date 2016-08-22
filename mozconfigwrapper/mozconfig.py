@@ -3,6 +3,7 @@ from optparse import OptionParser
 import shutil
 import sys
 import os
+import subprocess
 
 """
 Utility to make working with mozconfigs easier
@@ -73,8 +74,7 @@ def _edit(mozconfig):
     if not editor:
         print "Can't open editor, EDITOR environment variable not set"
     else:
-        cmd = editor + ' ' + mozconfig
-        os.system(cmd)
+        subprocess.call([editor, mozconfig])
 
 
 if __name__ == '__main__':
