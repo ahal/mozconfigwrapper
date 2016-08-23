@@ -2,7 +2,6 @@ Mozconfigwrapper is just like [virtualenvwrapper](http://www.doughellmann.com/pr
 except for [mozconfigs](https://developer.mozilla.org/en/Configuring_Build_Options). 
 Mozconfigwrapper basically hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs) 
 and allows you to easily create, switch, delete and edit them. Mozconfigs remain active across terminal sessions.
-Mozconfigwrapper is currently Unix only.
 
 # Installation Instructions
 
