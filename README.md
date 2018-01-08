@@ -1,4 +1,6 @@
+# Mozconfigwrapper
 [![Build Status](https://travis-ci.org/ahal/mozconfigwrapper.svg?branch=master)](https://travis-ci.org/ahal/mozconfigwrapper)
+[![PyPI version](https://badge.fury.io/py/mozconfigwrapper.svg)](https://badge.fury.io/py/mozconfigwrapper)
 
 Mozconfigwrapper is just like [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/)
 except for [mozconfigs](https://developer.mozilla.org/en/Configuring_Build_Options).
