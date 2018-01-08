@@ -7,7 +7,7 @@ except for [mozconfigs](https://developer.mozilla.org/en/Configuring_Build_Optio
 Mozconfigwrapper basically hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs)
 and allows you to easily create, switch, delete and edit them. Mozconfigs remain active across terminal sessions.
 
-# Installation Instructions
+## Installation
 
 First make sure you have [pip](http://pip.readthedocs.org/en/latest/installing.html) installed.
 
@@ -28,7 +28,7 @@ Finally run:
 
 Mozconfigwrapper is now installed.
 
-# Usage
+## Usage
 
 You can create, remove, switch, list and edit mozconfigs.
 
@@ -57,7 +57,7 @@ To edit the currently active mozconfig, run (the $EDITOR variable must be set):
     mozconfig -e
 
 
-# Configuration
+## Configuration
 
 #### mozconfig location
 
