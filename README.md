@@ -1,4 +1,4 @@
-[[https://travis-ci.org/ahal/mozconfigwrapper.svg?branch=master]]
+[![Build Status](https://travis-ci.org/ahal/mozconfigwrapper.svg?branch=master)](https://travis-ci.org/ahal/mozconfigwrapper)
 
 Mozconfigwrapper is just like [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/)
 except for [mozconfigs](https://developer.mozilla.org/en/Configuring_Build_Options).
