@@ -62,6 +62,15 @@ e.g, add:
 
 to your ~/.bashrc file.
 
+When running the buildwith command, `export MOZCONFIG=<path to mozconfig>` is run by default.  
+You can run any other command by overriding the MOZCONFIG_EXPORT_COMMAND.  
+For example, if you put this in your ~/.bashrc file:  
+
+    export MOZCONFIG_EXPORT_COMMAND="export MOZCONFIG=#1; launchctl setenv MOZCONFIG #1"
+
+buildwith will also set the MOZCONFIG environment variable in launchctl (useful when running Android Studio).  
+All `#1` occurences will be replaced by the path to the mozconfig file. 
+
 When you make a new mozconfig, it will be populated with some basic build commands and the name of the mozconfig 
 will be appended to the end of the OBJDIR instruction. You can modify what gets populated by default by editing 
 the ~/.mozconfigs/.template file. For example, if I wanted my default configuration to store object directories 
