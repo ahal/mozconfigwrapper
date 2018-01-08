@@ -9,18 +9,18 @@ function mozconfigwrapper_buildwith_home {
     fi
 }
 
-function mozconfigwrapper_export_command {
-    typeset export_command=$MOZCONFIG_EXPORT_COMMAND
+function mozconfigwrapper_buildwith_command {
+    typeset export_command=$BUILDWITH_COMMAND
     if [ "$export_command" = "" ]
     then
         export_command="export MOZCONFIG=#1"
-        export MOZCONFIG_EXPORT_COMMAND=$export_command
+        export BUILDWITH_COMMAND=$export_command
     fi
 }
 
 function buildwith {
     mozconfigwrapper_buildwith_home
-    mozconfigwrapper_export_command
+    mozconfigwrapper_buildwith_command
     typeset name="$1"
 
     if [ -z "$name" ]
@@ -37,7 +37,7 @@ function buildwith {
 
     mozconfig="$BUILDWITH_HOME/$name"
     echo "$name" >| "$BUILDWITH_HOME/.active"
-    eval ${MOZCONFIG_EXPORT_COMMAND//\#1/$mozconfig}
+    eval ${BUILDWITH_COMMAND//\#1/$mozconfig}
 
     if [ ! "$2" = "silent" ]
     then
@@ -107,9 +107,9 @@ function mozconfigwrapper_list_mozconfigs {
     # echo seems a little faster than find, even with -depth 3.
     mozconfigwrapper_buildwith_home || return 1
     (echo "$BUILDWITH_HOME"/*) 2>/dev/null \
-		| command \fmt -w 1 \
-		| command \sed -e "s!^$BUILDWITH_HOME\/!!" \
-		| (unset GREP_OPTIONS; command \egrep -v '^\*$') 2>/dev/null
+        | command \fmt -w 1 \
+        | command \sed -e "s!^$BUILDWITH_HOME\/!!" \
+        | (unset GREP_OPTIONS; command \egrep -v '^\*$') 2>/dev/null
 }
 
 mozconfigwrapper_buildwith_home
