@@ -6,7 +6,7 @@ import os
 from setuptools import setup, find_packages
 
 PACKAGE_NAME = "mozconfigwrapper"
-PACKAGE_VERSION = "0.6.0"
+PACKAGE_VERSION = "0.6.1"
 
 tests_require = [
     'cram >= 0.7',
@@ -15,7 +15,7 @@ tests_require = [
 # take description from README
 here = os.path.dirname(os.path.abspath(__file__))
 try:
-    description = file(os.path.join(here, 'README.md')).read()
+    description = open(os.path.join(here, 'README.md')).read()
 except (OSError, IOError):
     description = ''
 
@@ -37,11 +37,14 @@ setup(name=PACKAGE_NAME,
           mozconfig = mozconfigwrapper:mozconfig
         """,
       platforms =['Unix'],
-      classifiers=['Development Status :: 3 - Alpha',
-                   'Environment :: Console',
-                   'Intended Audience :: Developers',
-                   'License :: OSI Approved :: Mozilla Public License 1.1 (MPL 1.1)',
-                   'Operating System :: Unix',
-                   'Topic :: Software Development :: Libraries :: Python Modules',
-                  ]
+      classifiers=[
+          'Development Status :: 5 - Production/Stable',
+          'Environment :: Console',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
+          'Operating System :: POSIX',
+          'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 3',
+          'Topic :: Software Development :: Libraries :: Python Modules',
+      ],
      )

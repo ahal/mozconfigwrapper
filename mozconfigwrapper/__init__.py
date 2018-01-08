@@ -1,1 +1,1 @@
-from mozconfig import *
+from .mozconfig import *
