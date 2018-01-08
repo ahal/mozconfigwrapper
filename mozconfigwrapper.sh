@@ -14,6 +14,10 @@ function mozconfigwrapper_buildwith_command {
     if [ "$export_command" = "" ]
     then
         export_command="export MOZCONFIG=#1"
+        if [ ! "$2" = "silent" ]
+        then
+            export_command="$export_command && echo #1"
+        fi
         export BUILDWITH_COMMAND=$export_command
     fi
 }
@@ -38,11 +42,6 @@ function buildwith {
     mozconfig="$BUILDWITH_HOME/$name"
     echo "$name" >| "$BUILDWITH_HOME/.active"
     eval ${BUILDWITH_COMMAND//\#1/$mozconfig}
-
-    if [ ! "$2" = "silent" ]
-    then
-        echo "$MOZCONFIG"
-    fi
     return 0
 }
 
