@@ -24,6 +24,17 @@
   
   ac_add_options --enable-application=browser
 
+  $ buildwith foo
+  /tmp/mozconfigs/foo
+  $ echo $MOZCONFIG
+  /tmp/mozconfigs/foo
+
+  $ export BUILDWITH_COMMAND="export MOZCONFIG=#1 && echo Now building with:"
+  $ buildwith bar 
+  Now building with:
+  /tmp/mozconfigs/bar
+  $ echo $MOZCONFIG
+  /tmp/mozconfigs/bar
 
   $ rmmozconfig foo
   Removed: /tmp/mozconfigs/foo
