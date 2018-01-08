@@ -1,3 +1,5 @@
+[[https://travis-ci.org/ahal/mozconfigwrapper.svg?branch=master]]
+
 Mozconfigwrapper is just like [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/)
 except for [mozconfigs](https://developer.mozilla.org/en/Configuring_Build_Options).
 Mozconfigwrapper basically hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs)
