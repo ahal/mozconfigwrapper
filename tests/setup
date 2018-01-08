@@ -1,11 +1,9 @@
 #!/usr/bin/env sh
 
 cd "$TESTDIR/.."
-. mozconfigwrapper.sh
+python setup.py install
+. `which mozconfigwrapper.sh`
 
-virtualenv venv
-. venv/bin/activate
-python setup.py develop
 
 export BUILDWITH_HOME=/tmp/mozconfigs
 unset EDITOR

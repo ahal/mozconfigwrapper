@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-cd "$TESTDIR/.."
-rm -rf "venv"
 rm -rf $BUILDWITH_HOME

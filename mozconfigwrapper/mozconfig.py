@@ -51,21 +51,21 @@ def mozconfig(args=sys.argv[1:]):
     current = os.getenv('MOZCONFIG', '')
     if not args.ls and not args.edit:
         if current == '':
-            print "No mozconfig activated"
+            print("No mozconfig activated")
         else:
-            print current
+            print(current)
         return
 
     if args.ls and os.path.isdir(mozconfigdir):
-        for f in os.listdir(mozconfigdir):
+        for f in sorted(os.listdir(mozconfigdir)):
             if f not in special_files:
                 if current != '' and f == os.path.basename(current):
                     f += "*"
-                print f
+                print(f)
 
     if args.edit:
         if current == '':
-            print "No mozconfig activated"
+            print("No mozconfig activated")
         else:
             _edit(current)
 
@@ -73,7 +73,7 @@ def mozconfig(args=sys.argv[1:]):
 def _edit(mozconfig):
     editor = os.getenv('EDITOR')
     if not editor:
-        print "Can't open editor, EDITOR environment variable not set"
+        print("Can't open editor, EDITOR environment variable not set")
     else:
         subprocess.call([editor, mozconfig])
 
