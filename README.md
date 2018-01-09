@@ -72,13 +72,13 @@ to your ~/.bashrc file (or equivalent).
 #### buildwith command
 
 When running the buildwith command, `export MOZCONFIG=<path to mozconfig>` is run by default.
-You can run any other command by overriding the ``BUILDWITH_COMMAND``.
+You can use any other command by overriding the ``BUILDWITH_COMMAND`` environment variable.
 For example, if you put this in your ~/.bashrc file (or equivalent):
 
-    export BUILDWITH_COMMAND="export MOZCONFIG=#1; launchctl setenv MOZCONFIG #1"
+    export BUILDWITH_COMMAND="export MOZCONFIG=#1 && launchctl setenv MOZCONFIG #1"
 
 buildwith will also set the MOZCONFIG environment variable in launchctl (useful when running Android Studio).
-All `#1` occurences will be replaced by the path to the mozconfig file.
+All occurences of ``#1`` will be replaced by the path to the mozconfig file.
 
 #### mozconfig template
 
