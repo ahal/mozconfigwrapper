@@ -6,7 +6,7 @@ import os
 from setuptools import setup, find_packages
 
 PACKAGE_NAME = "mozconfigwrapper"
-PACKAGE_VERSION = "0.6.1"
+PACKAGE_VERSION = "1.0.0"
 
 tests_require = [
     'cram >= 0.7',
@@ -28,6 +28,7 @@ setup(name=PACKAGE_NAME,
       url='http://github.com/ahal/mozconfigwrapper',
       license='MPL 2.0/GPL 2.0/LGPL 2.1',
       scripts=['mozconfigwrapper.sh'],
+      python_requires=">=3.5",
       tests_require=tests_require,
       packages=find_packages(),
       include_package_data=True,
@@ -43,7 +44,6 @@ setup(name=PACKAGE_NAME,
           'Intended Audience :: Developers',
           'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)',
           'Operating System :: POSIX',
-          'Programming Language :: Python :: 2',
           'Programming Language :: Python :: 3',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ],
