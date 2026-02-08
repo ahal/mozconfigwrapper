@@ -72,6 +72,22 @@ For example, if you put this in your ~/.bashrc file (or equivalent):
 buildwith will also set the MOZCONFIG environment variable in launchctl (useful when running Android Studio).
 All occurences of ``#1`` will be replaced by the path to the mozconfig file.
 
+#### prompt prefix
+
+Similar to Python virtualenvs, you can display the active mozconfig name as a prefix in your shell prompt.
+This prefix only appears when you are inside a gecko repository. To enable this feature, add to your ~/.bashrc file (or equivalent):
+
+    export BUILDWITH_SHOW_PROMPT=1
+
+The default format is `(mozconfig_name) ` but you can customize it with:
+
+    export BUILDWITH_PROMPT_FORMAT="[%s] "
+
+The `%s` will be replaced with the mozconfig name. For example, if you activate a config named "debug" while inside a gecko repository, your prompt will show `(debug) ` or `[debug] ` depending on your format setting.
+
+The prompt automatically appears when you `cd` into a gecko repository and disappears when you leave it.
+Gecko repositories are detected by the presence of `mach` or `moz.configure` files.
+
 #### mozconfig template
 
 When you make a new mozconfig, it will be populated with some basic build commands and the name of the mozconfig
