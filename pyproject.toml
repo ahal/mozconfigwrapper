@@ -30,6 +30,7 @@ mozconfig = "mozconfigwrapper:mozconfig"
 
 [dependency-groups]
 dev = [
+    "commitizen",
     "pre-commit",
     "pytest",
 ]
@@ -42,6 +43,12 @@ target-version = "py39"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
+
+[tool.commitizen]
+version_provider = "pep621"
+tag_format = "v$version"
+update_changelog_on_bump = true
+changelog_start_rev = "8218f5b"
 
 [build-system]
 requires = ["uv-build"]
