@@ -9,7 +9,7 @@ PACKAGE_NAME = "mozconfigwrapper"
 PACKAGE_VERSION = "1.0.0"
 
 tests_require = [
-    'cram >= 0.7',
+    'pytest',
 ]
 
 # take description from README
