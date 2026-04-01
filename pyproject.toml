@@ -1,0 +1,41 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+[project]
+name = "mozconfigwrapper"
+version = "1.0.0"
+description = "Utility to make working with mozconfigs easier"
+readme = "README.md"
+license = "MPL-2.0"
+authors = [
+    { name = "Andrew Halberstadt", email = "ahal@pm.me" },
+]
+requires-python = ">=3.5"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "http://github.com/ahal/mozconfigwrapper"
+
+[project.scripts]
+mozconfig = "mozconfigwrapper:mozconfig"
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[tool.uv.build-backend.data]
+scripts = "src/scripts"
+
+[build-system]
+requires = ["uv-build"]
+build-backend = "uv_build"

@@ -12,7 +12,7 @@ def repo_root():
 
 @pytest.fixture(scope="module")
 def mozconfigwrapper_sh(repo_root):
-    return repo_root / "mozconfigwrapper.sh"
+    return repo_root / "src" / "scripts" / "mozconfigwrapper.sh"
 
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def home(tmp_path):
 def env(repo_root, home):
     return {
         "BUILDWITH_HOME": str(home),
-        "PYTHONPATH": str(repo_root),
+        "PYTHONPATH": str(repo_root / "src"),
     }
 
 
