@@ -48,7 +48,7 @@ select = ["E", "F", "W", "I"]
 version_provider = "pep621"
 tag_format = "v$version"
 update_changelog_on_bump = true
-changelog_start_rev = "8218f5b"
+changelog_start_rev = "c987410"
 
 [build-system]
 requires = ["uv-build"]
