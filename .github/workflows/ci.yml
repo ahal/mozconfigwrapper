@@ -27,7 +27,7 @@ jobs:
   pr-complete:
     needs: [test]
     runs-on: ubuntu-latest
-    if: always()
+    if: always() && github.event_name == 'pull_request'
     steps:
       - name: Check all jobs passed
         run: |
