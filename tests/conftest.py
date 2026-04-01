@@ -26,5 +26,3 @@ def env(repo_root, home):
         "BUILDWITH_HOME": str(home),
         "PYTHONPATH": str(repo_root / "src"),
     }
-
-

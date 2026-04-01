@@ -30,11 +30,18 @@ mozconfig = "mozconfigwrapper:mozconfig"
 
 [dependency-groups]
 dev = [
+    "pre-commit",
     "pytest",
 ]
 
 [tool.uv.build-backend.data]
 scripts = "src/scripts"
+
+[tool.ruff]
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
 
 [build-system]
 requires = ["uv-build"]

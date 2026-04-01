@@ -1,10 +1,11 @@
 import os
-import pytest
 import subprocess
+
+import pytest
+
 
 @pytest.fixture
 def sh(mozconfigwrapper_sh, env):
-
     def inner(cmd, custom_env=None):
         result = subprocess.run(
             ["bash", "-c", f". {mozconfigwrapper_sh}\n{cmd}"],
@@ -25,7 +26,8 @@ def test_buildwith(home, sh):
 def test_buildwith_sets_mozconfig(home, sh):
     output = sh(
         "mkmozconfig foo > /dev/null 2>&1 && mkmozconfig bar > /dev/null 2>&1"
-        " && buildwith foo silent && echo $MOZCONFIG")
+        " && buildwith foo silent && echo $MOZCONFIG"
+    )
     assert output == os.path.join(home, "foo")
 
 

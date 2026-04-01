@@ -24,8 +24,20 @@ jobs:
       - name: Run tests
         run: uv run --with pytest pytest
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Run pre-commit
+        run: uv run --with pre-commit pre-commit run -a
+        continue-on-error: true
+
   pr-complete:
-    needs: [test]
+    needs: [test, lint]
     runs-on: ubuntu-latest
     if: always() && github.event_name == 'pull_request'
     steps:
