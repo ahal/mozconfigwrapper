@@ -26,10 +26,13 @@ def test_mkmozconfig_creates_file(home):
     assert os.path.isfile(home / "foo")
 
 
-@pytest.mark.parametrize("expected", [
-    "MOZ_OBJDIR=@TOPSRCDIR@/foo",
-    "ac_add_options --enable-application=browser",
-])
+@pytest.mark.parametrize(
+    "expected",
+    [
+        "MOZ_OBJDIR=@TOPSRCDIR@/foo",
+        "ac_add_options --enable-application=browser",
+    ],
+)
 def test_mkmozconfig_content(home, expected):
     mozconfig.mkmozconfig("foo")
     assert expected in (home / "foo").read_text()
@@ -64,7 +67,10 @@ def test_mozconfig_edit_no_editor(home, monkeypatch, capsys):
     mozconfig.mkmozconfig("bar")
     monkeypatch.setenv("MOZCONFIG", str(home / "bar"))
     mozconfig.mozconfig(["-e"])
-    assert capsys.readouterr().out.strip() == "Can't open editor, EDITOR environment variable not set"
+    assert (
+        capsys.readouterr().out.strip()
+        == "Can't open editor, EDITOR environment variable not set"
+    )
 
 
 def test_mozconfig_edit_launches_editor(home, monkeypatch):
