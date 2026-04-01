@@ -1,3 +1,24 @@
+## 1.1.0 (2026-04-01)
+
+### Features
+
+- Add virtualenv-style prompt prefix showing the active mozconfig name (`BUILDWITH_SHOW_PROMPT`)
+
+### Bug Fixes
+
+- Unset `MOZCONFIG` when removing the currently active mozconfig
+
+### CI
+
+- Switch from Travis CI to GitHub Actions
+- Add pre-commit with ruff linting and formatting
+
+### Chores
+
+- Switch from setuptools to uv
+- Update minimum Python version to 3.9
+- Add commitizen for changelog management and conventional commits enforcement
+
 ## 1.0.0 (2021-03-06)
 
 ### Features
