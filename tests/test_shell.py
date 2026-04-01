@@ -41,3 +41,51 @@ def test_rmmozconfig(home, sh):
     output = sh("mkmozconfig foo > /dev/null 2>&1 && rmmozconfig foo")
     assert output == f"Removed: {os.path.join(home, 'foo')}"
     assert not os.path.exists(os.path.join(home, "foo"))
+
+
+def test_rmmozconfig_unsets_active_mozconfig(home, sh):
+    output = sh(
+        "mkmozconfig foo > /dev/null 2>&1 && buildwith foo silent"
+        " && rmmozconfig foo > /dev/null 2>&1 && echo $MOZCONFIG"
+    )
+    assert output == ""
+
+
+def test_prompt_shown_in_gecko_repo(home, env, tmp_path, sh):
+    gecko_dir = tmp_path / "gecko"
+    gecko_dir.mkdir()
+    (gecko_dir / "mach").touch()
+
+    env["BUILDWITH_SHOW_PROMPT"] = "1"
+    env["MOZCONFIG"] = str(home / "myconfig")
+    output = sh(f"cd {gecko_dir} && mozconfigwrapper_prompt", env)
+    assert output == "(myconfig)"
+
+
+def test_prompt_not_shown_outside_gecko_repo(home, env, tmp_path, sh):
+    env["BUILDWITH_SHOW_PROMPT"] = "1"
+    env["MOZCONFIG"] = str(home / "myconfig")
+    output = sh(f"cd {tmp_path} && mozconfigwrapper_prompt", env)
+    assert output == ""
+
+
+def test_prompt_not_shown_when_disabled(home, env, tmp_path, sh):
+    gecko_dir = tmp_path / "gecko"
+    gecko_dir.mkdir()
+    (gecko_dir / "mach").touch()
+
+    env["MOZCONFIG"] = str(home / "myconfig")
+    output = sh(f"cd {gecko_dir} && mozconfigwrapper_prompt", env)
+    assert output == ""
+
+
+def test_prompt_custom_format(home, env, tmp_path, sh):
+    gecko_dir = tmp_path / "gecko"
+    gecko_dir.mkdir()
+    (gecko_dir / "mach").touch()
+
+    env["BUILDWITH_SHOW_PROMPT"] = "1"
+    env["BUILDWITH_PROMPT_FORMAT"] = "[%s] "
+    env["MOZCONFIG"] = str(home / "myconfig")
+    output = sh(f"cd {gecko_dir} && mozconfigwrapper_prompt", env)
+    assert output == "[myconfig]"
