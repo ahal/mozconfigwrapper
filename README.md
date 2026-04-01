@@ -1,32 +1,23 @@
-# Mozconfigwrapper
-[![Build Status](https://travis-ci.org/ahal/mozconfigwrapper.svg?branch=master)](https://travis-ci.org/ahal/mozconfigwrapper)
+# mozconfigwrapper
 [![PyPI version](https://badge.fury.io/py/mozconfigwrapper.svg)](https://badge.fury.io/py/mozconfigwrapper)
 
-Mozconfigwrapper is just like [virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/)
-except for [mozconfigs](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html).
-Mozconfigwrapper basically hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs)
-and allows you to easily create, switch, delete and edit them. Mozconfigs remain active across terminal sessions.
+Mozconfigwrapper is a Python + shell tool to manager your [mozconfigs](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html).
+Mozconfigwrapper hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs)
+and allows you to easily create, switch, delete and edit them. Mozconfigs remain active across shell sessions.
 
 ## Installation
 
-First make sure you have [pip](http://pip.readthedocs.org/en/latest/installing.html) installed.
+Mozconfigwrapper is on PyPi as the `mozconfigwrapper` pacakge. The recommended method to install it is via [uv](https://docs.astral.sh/uv/getting-started/installation/):
 
-Follow these simple steps to get mozconfigwrapper running:
-
-    sudo pip install mozconfigwrapper
+    uv tool install mozconfigwrapper
 
 Then open your ~/.bashrc file (or equivalent) and add the line:
 
-    source /usr/local/bin/mozconfigwrapper.sh
-
-Note: mozconfigwrapper.sh may be in a different location on your system,
-use `which mozconfigwrapper.sh` to find it.
+    source $(which mozconfigwrapper.sh)
 
 Finally run:
 
     source ~/.bashrc
-
-Mozconfigwrapper is now installed.
 
 ## Usage
 
