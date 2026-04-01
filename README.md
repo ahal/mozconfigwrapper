@@ -1,5 +1,6 @@
 # mozconfigwrapper
 [![PyPI version](https://badge.fury.io/py/mozconfigwrapper.svg)](https://badge.fury.io/py/mozconfigwrapper)
+[![CI](https://github.com/ahal/mozconfigwrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/ahal/mozconfigwrapper/actions/workflows/ci.yml)
 
 Mozconfigwrapper is a Python + shell tool to manager your [mozconfigs](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html).
 Mozconfigwrapper hides all your mozconfigs away in a configurable directory (defaults to ~/.mozconfigs)
