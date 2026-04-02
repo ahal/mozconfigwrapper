@@ -8,7 +8,7 @@ and allows you to easily create, switch, delete and edit them. Mozconfigs remain
 
 ## Installation
 
-Mozconfigwrapper is on PyPi as the `mozconfigwrapper` pacakge. The recommended method to install it is via [uv](https://docs.astral.sh/uv/getting-started/installation/):
+Mozconfigwrapper is on PyPi as the `mozconfigwrapper` package. The recommended method to install it is via [uv](https://docs.astral.sh/uv/getting-started/installation/):
 
     uv tool install mozconfigwrapper
 
