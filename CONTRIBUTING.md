@@ -12,7 +12,7 @@ Run tests:
 
 Run linters:
 
-    uv run commit pre-commit run -a
+    uv run pre-commit run -a
 
 Install the pre-commit hooks (runs automatically on each commit):
 
